@@ -154,5 +154,138 @@ ReturnType methodName(/* Argument list */){
 
 ### 2.6.2 运用其他构件
 
+​	Java解决了“向前引用”的问题，引用的位置不必在类定义之后。
+
 ### 2.6.3 static关键字
 
+​	**static**关键字可以用来解决两个主要的问题，一是只想为特定域分配单一存储空间而不必考虑将要创建多少对象（甚至不创建对象）；二是希望某个方法不与这个类的任何方法关联在一起，即使不创建对象也可以调用这个方法。
+
+​	**static**可以用来修饰类的字段和方法，有些文献中将它们称为**类数据**和**类方法**。
+
+​	使用**static**关键字修饰字段的时候，无论创建多少个对象，它们的静态字段都只有一份存储空间（这个时候肯定会改变数据创建的方法）。可以使用对象或者使用类来调用该字段。
+
+​	使用**static**修饰方法的时候，也可以使用类或者对象中的任意一个来调用静态方法。
+
+## 2.7 你的第一个Java程序
+
+​	下面创建了一个简单的Java程序：
+
+```java
+// HelloDate.java
+import java.util.*;
+
+public class HelloDate{
+	public static void main(String[] args){
+		System.out.println("Hello, it's ");
+		System.out.println(new Date());
+	}
+}
+//Hello, it's 
+//Tue Aug 16 00:12:32 CST 2016
+```
+
+​	有一个特定类会被引入到每一个Java文件中，那就是java.lang。
+
+​	在"System.out.println();"中，System是一个类，out是其中的一个静态PrintStream对象，println是其一个静态方法。
+
+​	下面是另外一个示例程序：
+
+```java
+//: object/ShowProperties.java
+
+public class ShowProperties{
+  public static void main(String[] args){
+    System.getProperties().list(System.out);
+   	System.out.println(System.getProperty("user.name"));
+   	System.out.println(
+   		System.getproperty("java.library.path"));
+  }
+}///:~
+```
+
+输出结果如下：
+
+```tex
+-- listing properties --
+java.runtime.name=Java(TM) SE Runtime Environment
+sun.boot.library.path=/Library/Java/JavaVirtualMachines/jdk...
+java.vm.version=25.101-b13
+gopherProxySet=false
+java.vm.vendor=Oracle Corporation
+java.vendor.url=http://java.oracle.com/
+path.separator=:
+java.vm.name=Java HotSpot(TM) 64-Bit Server VM
+file.encoding.pkg=sun.io
+user.country=CN
+sun.java.launcher=SUN_STANDARD
+sun.os.patch.level=unknown
+java.vm.specification.name=Java Virtual Machine Specification
+user.dir=/Users/Howie/Documents/test
+java.runtime.version=1.8.0_101-b13
+java.awt.graphicsenv=sun.awt.CGraphicsEnvironment
+java.endorsed.dirs=/Library/Java/JavaVirtualMachines/jdk...
+os.arch=x86_64
+java.io.tmpdir=/var/folders/x0/kz6zrvzd66lbjzjnx3k49...
+line.separator=
+
+socksProxyPort=1080
+java.vm.specification.vendor=Oracle Corporation
+os.name=Mac OS X
+sun.jnu.encoding=UTF-8
+java.library.path=/Users/Howie/Library/Java/Extensions:...
+java.specification.name=Java Platform API Specification
+java.class.version=52.0
+sun.management.compiler=HotSpot 64-Bit Tiered Compilers
+os.version=10.11.6
+user.home=/Users/Howie
+user.timezone=
+java.awt.printerjob=sun.lwawt.macosx.CPrinterJob
+file.encoding=UTF-8
+java.specification.version=1.8
+user.name=Howie
+java.class.path=.
+socksProxyHost=127.0.0.1
+java.vm.specification.version=1.8
+sun.arch.data.model=64
+java.home=/Library/Java/JavaVirtualMachines/jdk...
+sun.java.command=ShowProperties
+java.specification.vendor=Oracle Corporation
+user.language=zh
+awt.toolkit=sun.lwawt.macosx.LWCToolkit
+java.vm.info=mixed mode
+java.version=1.8.0_101
+java.ext.dirs=/Users/Howie/Library/Java/Extensions:...
+sun.boot.class.path=/Library/Java/JavaVirtualMachines/jdk...
+java.vendor=Oracle Corporation
+file.separator=/
+java.vendor.url.bug=http://bugreport.sun.com/bugreport/
+sun.cpu.endian=little
+sun.io.unicode.encoding=UnicodeBig
+sun.cpu.isalist=
+Howie
+/Users/Howie/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.
+```
+
+### 2.7.1 编译和运行
+
+​	编译：
+
+```java
+javac file.java
+```
+
+​	运行：
+
+```java
+java classname
+```
+
+## 2.8 注释和嵌入文档
+
+### 2.8.1 注释文档
+
+​	将代码和文档链接起来。
+
+### 2.8.2 语法
+
+​	
