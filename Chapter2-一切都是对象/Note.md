@@ -288,4 +288,166 @@ java classname
 
 ### 2.8.2 语法
 
-​	
+​	javadoc命令以“/* *”开头，以“ */”结尾。
+
+​	使用javadoc的方法有两种，一种是嵌入HTML，另一种是使用“文档标签”。
+
+​	文档标签分为两种，**独立文档标签**是以一些“@”自负开头的命令，且要置于注释行的最前面（位于该行的“*”之后）。**行内文档标签**则可以出现在javadoc注释中的任何地方，它们也是以“@”字符开头，但是位于花括号内部。
+
+​	总共有三种类型的注释文档，分别对应于注释位置后面的三种元素：类、域和方法。即类注释正好位于类的定义之前；域注释正好位于域的定义之前；方法注释正好位于方法定义之前。
+
+​	javadoc的一个例子如下所示：
+
+```java
+//: object /Documentation1.java
+/** A class comment */
+public class Documentation1 {
+	/** A field comment */
+	public int i;
+	/** A method comment */
+	public void f(){
+	}
+}///:~
+```
+
+​	其生成的javadoc样式如下图所示：
+
+
+
+![javadoc样式](img/javadoc.png)
+
+​	注意javadoc只能为**public**（公共）和**private**（受保护）成员进行文档注释。**private**（私有）和包内可访问成员的注释会被忽略掉（可以使用**-private**选项进行标记，以便把**private**成员的注释也包含在内）。
+
+### 2.8.3 嵌入式HTML
+
+​	可以直接在javadoc中插入HTML代码，但是注意不要在嵌入式HTML标签中使用**\<h1\>**或**\<hr\>**标签，因为javadoc会插入自己的标题，而你的标题可能会和它们产生冲突。
+
+​	所有类型的注释文档——类、域和方法都支持嵌入式HTML。
+
+### 2.8.4 一些标签示例
+
+1. @see：引用其他类
+
+   ​	@see标签允许用户引用其他类的文档，可以被用来在生成的HTML文档中链接到其他文档。文档中会生成一个“See Also”（参见）条目。但是javadoc不会检查你所提供的超链接是否有效。
+
+2. {@link package.class#member label}
+
+   ​	与@see标签极为类似，只不过它用于行内，而且使用“label”链接而不是“See Also”。
+
+3. {@docRoot}
+
+   ​	该标签会产生到文档根目录的相对路径，用于文档树页面的显式超链接。
+
+4. {@inheritDoc}
+
+   ​	该标签从当前类的最直接基类中集成相关文档到当前的文档注释中。
+
+5. @version
+
+   ​	该标签的使用格式如下：
+
+   ```java
+   @version version-infomation
+   ```
+
+   ​	其中“**version-infomation**”是需要包含在版本说明中的重要信息，如果javadoc命令行使用了“**-version**”标记，那么就从生成的HTML文档中特别提取出版本信息。
+
+6. @author
+
+   ​	该标签的使用格式如下：
+
+   ```java
+   @author author-infomation
+   ```
+
+   ​	其中“**author-infomation**”是需要包含在作者说明中的重要信息，如果javadoc命令行使用了“**-author**”标记，那么就从生成的HTML文档中特别提取出作者信息。
+
+   ​	该标签可以使用多个，以便列出所有的作者，但是它们必须连续放置。
+
+7. @since
+
+   ​	该标签允许你指定程序代码使用的最早的版本，可以在HTML文档中看到它被用来指定所用的JDK版本的情况。
+
+8. @param
+
+   ​	该标签用于方法文档中，形式如下：
+
+   ```java
+   @param parameter-name description
+   ```
+
+   ​	 其中，**parameter-name**是方法的参数列表中的标识符，**description**是可以延续数行的文本，终止于新的文档标签出现之前。可以使用任意多个这种标签，大约每隔参数都有一个这样的标签。
+
+9. @return
+
+   ​	该标签用于方法文档，形式如下：
+
+   ```java
+   @return description
+   ```
+
+   ​	其中，**description**用来描述返回值的含义，可以延续数行。
+
+10. @throws
+
+    ​	形式如下：
+
+    ```java
+    @throws fully-qualified-class-name description
+    ```
+
+    ​	其中，**fully-qualified-class-name**是一个异常类的无歧义名字，**description**（同样可以延续数行）解释了为什么会出现这个异常。
+
+11. @deprecated
+
+    ​	该标签用于指出一些特性已由改进的新特性所取代，建议用户不要再使用这些特性，因为它们将来可能会被删除。如果使用一个标记为**@deprecated**的方法，则会引起编译器发布警告。
+
+    ​	在Java SE5中，Javadoc标签@deprecated已经被@Deprecated注解所替代。
+
+### 2.8.5 文档示例
+
+​	仍然使用本书中第一个Java程序作为示例：
+
+```java
+//: object/HelloDate.java
+import java.util.*;
+
+/** The first Thinking in Java example program.
+* Displays a String and today’s date.
+* @author Bruce Eckel
+* @author www.MindView.net
+* @version 4.0
+*/
+public class HelloDate{
+	/** Entry point to class & application.
+	* @param args array of string arguments
+	* @throws exceptions No exceptions thrown
+	*/
+	public static void main(String args[]){
+		System.out.println("Hello, it's ");
+		System.out.println(new Date());
+	}
+} /* Output:(55% match)
+Hello. it’s:
+Wed Oct 05 14:39:36 MDT 2005
+*///:~
+```
+
+​	其中，**//:**是本书的特别格式，表明是包含源文件名的注释行；**///:~**标志着源码清单的结束。
+
+​	**/*Output**标签表输出的开始部分将由这个文件生成，通过这种形式，它会被自动地测试以验证其准确性。55%表示本次输出和下次输出预期只有55%的相关性。
+
+## 2.9 编码风格
+
+​	在[“**Java编程语言编码约定**”](http://java.sun.com/docs/codeconv/index.html)中，代码风格是这样规定的：类名的首字母要大写，如果类名是由数个单词组成的，那么每个单词的首字母都要大写，这种风格也被称为驼峰风格。
+
+​	几乎所有的其他内容——方法、字段以及对象引用名称等，公认的风格与类的风格一样，只不过标志符的第一个字母小写。
+
+## 2.10 总结
+
+​	本章主要讲述了如何编写一个简单的Java程序以及Java的一些基本思想。
+
+​	本章的示例程序都是顺序结构，下一章将会介绍分支结构。
+
+## 2.11 练习
+
