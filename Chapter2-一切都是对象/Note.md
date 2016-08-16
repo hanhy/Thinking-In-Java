@@ -451,3 +451,85 @@ Wed Oct 05 14:39:36 MDT 2005
 
 ## 2.11 练习
 
+### 练习1:
+
+​	创建一个类，它包含一个int域和一个char域，它们都没有被初始化，将它们的值打印出来，以验证Java执行了默认初始化。
+
+​	[Answer](Exercises/Code/1/Init.java)
+
+### 练习2：
+
+​	参照本章的HelloDate例子，创建一个“Hello，World”程序，该程序只要输出这一句话即可。
+
+​	[Answer](Exercises/Code/2/HelloWorld.java)
+
+### 练习3：
+
+​	找出含有**ATypeName**的代码段，将其改写成完整的程序，然后编译、运行。
+
+​	[Answer](Exercises/Code/3/ATypeName.java)
+
+### 练习4：
+
+​	将**DataOnly**代码段改写成一个程序，然后编译、运行。
+
+​	[Answer](Exercises/Code/4/DataOnly.java)
+
+### 练习5：
+
+​	修改前一个练习，将DataOnly中的数据在main()方法中赋值并打印出来。
+
+​	[Answer](Exercises/Code/5/DataOnly.java)
+
+### 练习6：
+
+​	编写一个程序，让它含有本章所定义的**storage()**方法的代码段，并调用之。
+
+​	[Answer](Exercises/Code/6/Method.java)
+
+### 练习7：
+
+​	将**Incrementable**的代码段改写成一个完整的可运行程序。
+
+​	[Answer](Exercises/Code/7/Incrementable.java)
+
+### 练习8：
+
+​	编写一个程序，展示无论你创建了某个特定类的多少个对象，这个类中的某个特定的static域只有一个实例。
+
+​	[Answer](Exercises/Code/8/StaticTest.java)
+
+### 练习9：
+
+​	编写一个程序，展示自动包装功能对所有的基本类型和包装器类型都起作用。
+
+​	[Answer](Exercises/Code/9/AutoWrap.java)
+
+### 练习10：
+
+​	编写一个程序，打印出从命令行获得的三个参数。为此，需要确定命令行数组中String的下标。
+
+### 练习11：
+
+​	将**AllTheColorsOfTheRainbow**这个示例改写成一个程序，然后编译、运行。
+
+### 练习12：
+
+​	找出**HelloDate.java**的第二版本，也就是那个简单注释文档的示例。对该文件执行javadoc，然后通过Web浏览器验证所产生的文档。
+
+### 练习13：
+
+​	通过**Javadoc**运行**Docmentation1.java**，**Docmentation2.java**和**Docmentation3.java**，然后通过Web浏览器验证所产生的文档。
+
+### 练习14：
+
+​	在前一个练习中加入各项的HTML列表。
+
+### 练习15:
+
+​	使用练习2的程序，加入注释文档，用javadoc提取此注释文档，并产生一个HTML文件，然后通过Web浏览器查看结果。
+
+### 练习16：
+
+​	找到第5章的**Overloading.java**示例，并未它加入javadoc文档。然后用javadoc提取此注释文档，并产生一个HTML文件，最后，通过Web浏览器查看结果。
+
