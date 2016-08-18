@@ -390,19 +390,19 @@ public class Documentation1 {
 
 10. @throws
 
-    ​	形式如下：
+   ​	形式如下：
 
-    ```java
-    @throws fully-qualified-class-name description
-    ```
+   ```java
+   @throws fully-qualified-class-name description
+   ```
 
-    ​	其中，**fully-qualified-class-name**是一个异常类的无歧义名字，**description**（同样可以延续数行）解释了为什么会出现这个异常。
+   ​	其中，**fully-qualified-class-name**是一个异常类的无歧义名字，**description**（同样可以延续数行）解释了为什么会出现这个异常。
 
 11. @deprecated
 
-    ​	该标签用于指出一些特性已由改进的新特性所取代，建议用户不要再使用这些特性，因为它们将来可能会被删除。如果使用一个标记为**@deprecated**的方法，则会引起编译器发布警告。
+   ​	该标签用于指出一些特性已由改进的新特性所取代，建议用户不要再使用这些特性，因为它们将来可能会被删除。如果使用一个标记为**@deprecated**的方法，则会引起编译器发布警告。
 
-    ​	在Java SE5中，Javadoc标签@deprecated已经被@Deprecated注解所替代。
+   ​	在Java SE5中，Javadoc标签@deprecated已经被@Deprecated注解所替代。
 
 ### 2.8.5 文档示例
 
@@ -527,11 +527,11 @@ Wed Oct 05 14:39:36 MDT 2005
 
 ​	通过**Javadoc**运行**Docmentation1.java**，**Docmentation2.java**和**Docmentation3.java**，然后通过Web浏览器验证所产生的文档。
 
-​	[Answer1](Exercises/Code/13/Documetation1/index.html)
+​	[Answer1](Exercises/Code/13/index.html)
 
-​	[Answer2](Exercises/Code/13/Documetation2/index.html)
+​	[Answer2](Exercises/Code/13/index.html)
 
-​	[Answer3](Exercises/Code/13/Documetation3/index.html)
+​	[Answer3](Exercises/Code/13/index.html)
 
 ### 练习14：
 
