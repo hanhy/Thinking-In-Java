@@ -174,24 +174,34 @@ System.out.println(Math.round(0.7f));
 
 ​	分别显示用float和double指数计数法所能表达的最大和最小的数字。
 
-​	[Answer](Exercises/Code/08/Shap.java)
+​	[Answer](Exercises/Code/09/Shape.java)
 
 ### 练习10
 
 ​	编写一个具有两个常量值的程序，一个具有交替的二进制位1和0，其中最低有效位为0，另一个也具有交替的二进制位1和0，但是其最低的有效位为1。取这两个值，用按位操作符以所有可能的方式结合运算它们，然后用Integer.toBianryString()显示。
 
+​	[Answer](Exercises/Code/10/Bit.java)
+
 ### 练习11
 
-​	以一个最高有效位为的二进制数字开始，用有符号右移操作赋对其进行右移，直至所有的二进制位都被移出为止，毎移一位都要使用Integer.toBinaryString()显示结果。
+​	以一个最高有效位为1的二进制数字开始，用有符号右移操作赋对其进行右移，直至所有的二进制位都被移出为止，毎移一位都要使用Integer.toBinaryString()显示结果。
+
+​	[Answer](Exercises/Code/11/BitMove.java)
 
 ### 练习12
 
 ​	以一个所有位都为1的二进制数字开始，先左移它，然后用无符号右移操作符对其进行右移，直至所有的二进制位都被移出为止，毎移一位都要使用Integer.toBinaryString()显示结果。
 
+​	[Answer](Exercises/Code/12/BitMove.java)
+
 ### 练习13
 
 ​	编写一个方法，它以二进制形式显示char类型的值。使用多个不同的字符来展示它。
 
+​	[Answer](Exercises/Code/13/ShowChar.java)
+
 ### 练习14
 
 ​	编写一个接收两个字符串参数的方法，用各种布尔值的比较关系来比较这两个字符串，然后把结果打印出来。做==和!=比较的同时，用equals()做测试。在main()里面用几个不同的字符串对象调用这个方法。	
+
+​	[Answer](Exercises/Code/14/Compare.java)
