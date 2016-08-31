@@ -6,6 +6,6 @@ public class Init {
 		System.out.println(c);
 	}
 }/* Output(100% match)
-0
+1
 
 *///:~
