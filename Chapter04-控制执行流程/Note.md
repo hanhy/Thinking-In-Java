@@ -82,7 +82,7 @@
 
 ​	重复第三章中的练习10，不要用Integer.toBinaryString()方法，而使用三元操作符和按位操作符来显示二进制的1和0。
 
-​	[暂未解决]()
+​	[Answer](Exercises/Code/05/BitTest.java)
 
 ### 练习6
 
