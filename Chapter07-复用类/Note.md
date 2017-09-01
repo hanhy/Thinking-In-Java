@@ -50,3 +50,122 @@
 ​	将导出类作为基类处理的过程叫做向上转型，这一叫法来自于传统的类继承图的画法。
 
 ​	虽然多次强调继承，但是实际上继承是不常用的，组合是更为多用的方法。实际上，继承最重要的使用场景是你需要使用向上转型的时候。
+
+## 7.8 final关键字
+
+​	final关键字传达给用户的信息是，这是不能被改变的。
+
+### 7.8.1 final数据
+
+​	通常有两种用法：
+
+1. 编译时常量
+2. 运行时常量
+
+​        编译时常量必须是基本类型，用final关键字修饰；如果不是基本类型，则表示一个不变的引用，该引用只能指向一个对象，但是对象本身可变。
+
+​	final数据在定义时必须被初始化。
+
+​	static final和final的区别：
+
+1. static final若修饰对象，则对象只有一个，对象也是不可变的
+2. static final在类加载的时候就被初始化，final在执行时初始化
+
+使用static final和final的初始化测试：
+
+```java
+public class Test {
+	private final Value v1 = new Value(1);
+	private static final Value v2 = new Value(2);
+	
+	public Test() {
+		System.out.println("v1:" + v1.i);
+		System.out.println("v2:" + v2.i);
+	}
+	
+	public static void main(String[] args) {
+		Test test = new Test();
+		System.out.println("testv1:" + test.v1.i);
+		System.out.println("testv2:" + test.v2.i);
+	}
+}
+
+class Value {
+	int i;
+	public Value(int i){
+		System.out.println("Value:" + i);
+		this.i=i;
+	}
+}
+/*Value:2
+Value:1
+v1:1
+v2:2
+testv1:1
+testv2:2*///:~
+```
+
+- 空白final
+
+  ​	Java中允许空白final的存在，即，域可以不初始化，但是一定要在构造器中初始化
+
+```java
+public class Test {
+	private final Value v1;// = new Value(1);;
+	private static final Value v2 = new Value(2);
+	
+	public Test() {
+		System.out.println("Constructor!");
+		v1 = new Value(1);
+		System.out.println("v1:" + v1.i);
+		System.out.println("v2:" + v2.i);
+	}
+	
+	public static void main(String[] args) {
+		Test test = new Test();
+		System.out.println("testv1:" + test.v1.i);
+		System.out.println("testv2:" + test.v2.i);
+	}
+}
+
+class Value {
+	int i;
+	public Value(int i){
+		System.out.println("Value:" + i);
+		this.i=i;
+	}
+}
+/*Value:2
+Value:1
+Constructor!
+v1:1
+v2:2
+testv1:1
+testv2:2
+*///:~
+```
+
+- final参数
+
+  ​	Java允许在参数列表中以声明的方式将参数指明为final，则该引用指向的对象不能被改变。这个特性一般用来向匿名内部类传递数据，参见第10章。
+
+```java
+public class Test {
+	public int negate(final int n) {
+		//n = -1 * n;
+		return -1 * n;
+	}
+	public static void main(String[] args) {
+		Test test = new Test();
+		System.out.println(test.negate(1));
+	}
+}
+/*-1
+*///:~
+```
+
+### 7.8.2 final方法 
+
+
+
+### 7.8.3 final类
