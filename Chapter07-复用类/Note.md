@@ -166,6 +166,76 @@ public class Test {
 
 ### 7.8.2 final方法 
 
+​	使用final方法的场景包括：1、锁定方法，防止任何修改	2、提高效率（已经不常用）
 
+​	final和private关键字：
+
+```java
+public class Test {
+	public static void main(String[] args) {
+		Override2 o2 = new Override2();
+		o2.f();
+		o2.g();
+
+		//You could upcast but can't call the methods.
+		Override1 o1 = o2;
+		//o1.f();
+		//o1.g();
+		o1.testUpcast();
+		
+		WithFinals base = o2;
+		//base.f();
+		//base.g();
+		base.testUpcast();
+	}
+}
+
+class WithFinals {
+	private final void f() {System.out.println("base f()");}
+	private void g() {System.out.println("base g()");}
+	public void testUpcast() {f();g();};
+}
+
+class Override1 extends WithFinals{
+	private final void f() {System.out.println("extend 1 f()");}
+	private void g() {System.out.println("extend 1 g()");}
+	public void testUpcast() {f();g();}
+}
+
+class Override2 extends Override1 {
+	public final void f() {System.out.println("extend 2 f()");}
+	public void g() {System.out.println("extend 2 g()");}
+}
+```
+
+​	所有的private方法都是隐式地指定为final的，为private添加final关键字没有任何意义，可以在派生类中“重写”基类的private方法，编译器不会报错，但是其实并不是在重写，重写是针对基类的可见方法（上溯之后能够调用相同的方法）的，private本身不可见，所以，上面的操作仅仅是定义了名字一样的新方法而已。
 
 ### 7.8.3 final类
+
+​	final类的域可以根据个人意愿选择是不是定义为final，不论类是不是final类。
+
+​	然而，final类禁止继承，因此，final类的所有方法都是隐式地指定为final的，无法进行覆盖，可以在方法中为方法添加final修饰词，但是这不会添加任何意义。
+
+### 7.8.4 有关final的忠告
+
+​	很多时候，将方法指定为final是有效的，但是你无法完整地预料其他开发者何时会需要复用你的方法，所以可能会妨碍后续的开发。
+
+## 7.9 初始化及类的加载
+
+​	C++中，如果一个static期望另一个static在初始化之前就能有效使用，就会出现问题，但是Java不会有这个问题。Java中所有的事物都是对象，每个类的编译代码都存在与自己独立的文件中，且只会在初次使用是才会被加载。这通常发生在第一次创建对象的时候，对于static域和方法而言，发生在第一次访问之时，会按照书写顺序进行初始化。
+
+### 7.9.1 继承与初始化
+
+​	包含继承的初始化过程如下（以main方法发生在派生类中为例）：
+
+​	通过extends关键字找到根基类->
+
+​	从上到下进行类的加载（加载时初始化静态变量）->
+
+​	加载完毕开始创建对象->
+
+​	基类的变量初始化->基类构造器->派生类变量初始化->派生类构造器
+
+### 7.10 总结
+
+​	设计对象的时候，不要太大难以复用，也不要太小无法使用。把程序当做一个进化的生命体。
